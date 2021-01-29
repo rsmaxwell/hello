@@ -2,4 +2,4 @@
 
 echo build
 
-exit /b 1
+exit /b 0
