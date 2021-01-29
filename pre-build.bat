@@ -12,7 +12,7 @@ set "TIMESTAMP=%YYYY%%MM%%DD%-%HH%%Min%%Sec%"
 echo timestamp: "%TIMESTAMP=%"
 
  
-FOR /R ".\src\" %%G in (version.h) DO (
+FOR /R ".\src\" %%G in (*version.h) DO (
    Echo File: %%G
    powershell -Command "(gc %%G) -replace '<VERSION>',    '%VERSION%'    | Out-File -encoding ASCII %%G"
    powershell -Command "(gc %%G) -replace '<BUILD_ID>',   '%BUILD_ID%'   | Out-File -encoding ASCII %%G"
