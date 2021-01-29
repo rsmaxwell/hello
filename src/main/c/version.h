@@ -1,5 +1,6 @@
 
 
+#define VERSION      "<VERSION>"
 #define BUILD_ID     "<BUILD_ID>"
 #define BUILD_DATE   "<BUILD_DATE>"
 #define GIT_COMMIT   "<GIT_COMMIT>"

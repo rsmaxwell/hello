@@ -2,27 +2,24 @@
 
 echo pre-build
 
-rem VERSION="0.0.$((${BUILD_ID}))"
-rem TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
-rem     
-rem find . -name "Version.java" | while read versionfile; do
-rem 
-rem     echo "Replacing tags in ${versionfile}"
-rem 
-rem     sed -i "s@<VERSION>@${VERSION}@g"            ${versionfile}    
-rem     sed -i "s@<BUILD_ID>@${BUILD_ID}@g"          ${versionfile}
-rem     sed -i "s@<BUILD_DATE>@${TIMESTAMP}@g"       ${versionfile}
-rem     sed -i "s@<GIT_COMMIT>@${GIT_COMMIT}@g"      ${versionfile}
-rem     sed -i "s@<GIT_BRANCH>@${GIT_BRANCH}@g"      ${versionfile}
-rem     sed -i "s@<GIT_URL>@${GIT_URL}@g"            ${versionfile}
-rem done
+set VERSION=0.0.%BUILD_ID%
 
-rem powershell -Command "(gc myFile.txt) -replace 'foo', 'bar' | Out-File -encoding ASCII myFile.txt"
+for /f "tokens=2 delims==" %%a in ('wmic OS Get localdatetime /value') do set "dt=%%a"
+set "YYYY=%dt:~0,4%" & set "MM=%dt:~4,2%" & set "DD=%dt:~6,2%"
+set "HH=%dt:~8,2%" & set "Min=%dt:~10,2%" & set "Sec=%dt:~12,2%"
+set "TIMESTAMP=%YYYY%%MM%%DD%-%HH%%Min%%Sec%"
 
-FOR /R ".\" %%G in (version.h) DO (
-   Echo now in %%G
-   powershell -Command "(gc %%G) -replace '<BUILD_ID>', '%BUILD_ID%' | Out-File -encoding ASCII %%G"
+echo timestamp: "%TIMESTAMP=%"
+
+ 
+FOR /R ".\src\" %%G in (version.h) DO (
+   Echo File: %%G
+   powershell -Command "(gc %%G) -replace '<VERSION>',    '%VERSION%'    | Out-File -encoding ASCII %%G"
+   powershell -Command "(gc %%G) -replace '<BUILD_ID>',   '%BUILD_ID%'   | Out-File -encoding ASCII %%G"
+   powershell -Command "(gc %%G) -replace '<BUILD_DATE>', '%TIMESTAMP%'  | Out-File -encoding ASCII %%G"
+   powershell -Command "(gc %%G) -replace '<GIT_COMMIT>', '%GIT_COMMIT%' | Out-File -encoding ASCII %%G"
+   powershell -Command "(gc %%G) -replace '<GIT_BRANCH>', '%GIT_BRANCH%' | Out-File -encoding ASCII %%G"
+   powershell -Command "(gc %%G) -replace '<GIT_URL>',    '%GIT_URL%'    | Out-File -encoding ASCII %%G"
 )
-Echo "back home"
 
 
