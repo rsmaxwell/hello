@@ -1,8 +1,12 @@
 @echo off
+SetLocal EnableDelayedExpansion
 
-echo pre-build
-
-set VERSION=0.0.%BUILD_ID%
+IF "%BUILD_ID%" == "" (
+    set VERSION=0.0.1-SNAPSHOT
+) else (
+    set /a "NUMBER=%BUILD_ID%-0"
+    set VERSION=0.0.!NUMBER!
+)
 
 for /f "tokens=2 delims==" %%a in ('wmic OS Get localdatetime /value') do set "dt=%%a"
 set "YYYY=%dt:~0,4%" & set "MM=%dt:~4,2%" & set "DD=%dt:~6,2%"
@@ -11,8 +15,7 @@ set "BUILD_DATE=%YYYY%%MM%%DD%-%HH%%Min%%Sec%"
 
 echo BUILD_DATE: "%BUILD_DATE%"
 
- 
-FOR /R ".\src\" %%G in (*version.h) DO (
+for /F "delims=" %%G in ('dir /b /s .\src\version.h') do (
    Echo File: %%G
    powershell -Command "(gc %%G) -replace '<VERSION>',    '%VERSION%'    | Out-File -encoding ASCII %%G"
    powershell -Command "(gc %%G) -replace '<BUILD_ID>',   '%BUILD_ID%'   | Out-File -encoding ASCII %%G"

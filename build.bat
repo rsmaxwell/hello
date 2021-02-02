@@ -13,9 +13,12 @@ if NOT exist %DIST% mkdir %DIST%
 if NOT exist %OUTPUT% mkdir %OUTPUT%
 
 cd %OUTPUT%
-
-echo on
+@echo on
 make -f %ROOT%\src\main\make\windows_amd64.makefile %*
+@echo off
 
-
+rmdir /S /Q artifact
+mkdir artifact
+cd dist
+zip ..\artifact\hello.zip *
 
