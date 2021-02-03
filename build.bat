@@ -19,8 +19,9 @@ make -f %ROOT%\src\main\make\windows_amd64.makefile %*
 
 rmdir /S /Q %ROOT%\artifact
 mkdir %ROOT%\artifact
-cd %ROOT%\dist
-zip %ROOT%\artifact\hello.zip *
 
-cd %ROOT%\src\main\resources
-zip -u %ROOT%\artifact\hello.zip hello.ico
+cd %ROOT%\dist
+copy %ROOT%\src\main\resources\hello.ico 
+copy %ROOT%\src\main\scripts\*
+zip %ROOT%\artifact\hello.zip * 
+
