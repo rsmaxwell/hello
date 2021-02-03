@@ -17,10 +17,10 @@ cd %OUTPUT%
 make -f %ROOT%\src\main\make\windows_amd64.makefile %*
 @echo off
 
-rmdir /S /Q artifact
-mkdir artifact
-cd dist
-zip %ROOT%\\artifact\hello.zip *
+rmdir /S /Q %ROOT%\artifact
+mkdir %ROOT%\artifact
+cd %ROOT%\dist
+zip %ROOT%\artifact\hello.zip *
 
 cd %ROOT%\src\main\resourses
 zip -u %ROOT%\artifact\hello.zip hello.ico
