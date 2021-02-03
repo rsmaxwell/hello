@@ -4,6 +4,7 @@
 
 int main(int argc, char *argv[]) {
     printf("Hello World!\n");
+    printf("    VERSION    = %s\n", VERSION);
     printf("    BUILD_ID   = %s\n", BUILD_ID);
     printf("    BUILD_DATE = %s\n", BUILD_DATE);
     printf("    GIT_COMMIT = %s\n", GIT_COMMIT);
