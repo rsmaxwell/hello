@@ -13,8 +13,6 @@ set "YYYY=%dt:~0,4%" & set "MM=%dt:~4,2%" & set "DD=%dt:~6,2%"
 set "HH=%dt:~8,2%" & set "Min=%dt:~10,2%" & set "Sec=%dt:~12,2%"
 set "BUILD_DATE=%YYYY%%MM%%DD%-%HH%%Min%%Sec%"
 
-echo BUILD_DATE: "%BUILD_DATE%"
-
 for /F "delims=" %%G in ('dir /b /s .\src\version.h') do (
    Echo File: %%G
    powershell -Command "(gc %%G) -replace '<VERSION>',    '%VERSION%'    | Out-File -encoding ASCII %%G"
