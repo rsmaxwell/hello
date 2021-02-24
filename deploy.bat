@@ -18,7 +18,7 @@ IF "%BUILD_ID%" == "" (
     set VERSION=0.0.!NUMBER!
 )
 
-set FILENAME=%ARTIFACTID%.%PACKAGING%
+set FILENAME=artifact/%ARTIFACTID%.%PACKAGING%
 set URL=%REPOSITORY_URL%/repository/%REPOSITORY%
 
 cd C:\Users\jenkins\.jenkins\workspace\hello\artifact
