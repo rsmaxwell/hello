@@ -4,7 +4,7 @@ SetLocal EnableDelayedExpansion
 set GROUPID=com.rsmaxwell.hello
 set ARTIFACTID=hello
 set PACKAGING=zip
-set REPOSITORY_URL=http://192.168.5.38:8081/archiva
+set REPOSITORY_URL=http://192.168.5.38:8080/archiva
 
 IF "%BUILD_ID%" == "" (
     set REPOSITORY=snapshots
