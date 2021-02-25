@@ -4,15 +4,15 @@ SetLocal EnableDelayedExpansion
 set GROUPID=com.rsmaxwell.hello
 set ARTIFACTID=hello
 set PACKAGING=zip
-set REPOSITORY_URL=http://192.168.5.38:8080/archiva
+set REPOSITORY_URL=http://192.168.5.38:8080
 
 IF "%BUILD_ID%" == "" (
     set REPOSITORY=snapshots
     set REPOSITORYID=snapshots
     set VERSION=0.0.1-SNAPSHOT
 ) else (
-    set REPOSITORY=internal
-    set REPOSITORYID=internal
+    set REPOSITORY=build
+    set REPOSITORYID=build
 
     set /a "NUMBER=%BUILD_ID%-0"
     set VERSION=0.0.!NUMBER!
