@@ -3,8 +3,4 @@ dist/
 target/
 Debug/
 .vs/
-
-
-
-
-
+x64/
