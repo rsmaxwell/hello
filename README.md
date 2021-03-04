@@ -15,7 +15,7 @@ There are a number of batch files intended for use in a Jenkins build
  
   Calculates the version number based on the `BUILD_ID` environment variable
 
-  Replaces placeholders in `version.h` header file for build info taken from the environment 
+  Replaces placeholders in `version.h` with build info taken from the environment 
 
 ## build.bat
 
