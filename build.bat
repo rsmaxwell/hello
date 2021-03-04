@@ -9,16 +9,21 @@ set DIST=%ROOT%\dist
 set BUILD_TYPE=static_debug
 
 
-if NOT exist %DIST% mkdir %DIST%
-if NOT exist %OUTPUT% mkdir %OUTPUT%
+rmdir /s /q %DIST%
+mkdir %DIST%
+
+rmdir /s /q %OUTPUT%
+mkdir %OUTPUT%
+
+rmdir /s /q %ROOT%\artifact
+mkdir %ROOT%\artifact
+
 
 cd %OUTPUT%
 @echo on
 make -f %ROOT%\src\main\make\windows_amd64.makefile %*
+if %errorlevel% neq 0 exit /b %errorlevel%
 @echo off
-
-rmdir /S /Q %ROOT%\artifact
-mkdir %ROOT%\artifact
 
 cd %ROOT%\dist
 copy %ROOT%\src\main\resources\hello.ico 
