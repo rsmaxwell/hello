@@ -5,7 +5,7 @@ This project is a simple example of a C program which can be compiled
   - commandline with a make file
   - Visual Studio with a solution file
 
-The source is arranged to make it straightforward to replace place holders for a number of build constaints.
+The source is arranged to make it straightforward to replace placeholders for a number of build constaints.
 
 The program outputs a fixed string and then outputs these build info constaints.
 
@@ -15,7 +15,7 @@ There are a number of batch files intended for use in a Jenkins build
  
   Calculates the version number based on the `BUILD_ID` environment variable
 
-  Replaces place holders in `version.h` header file for build info taken from the environment 
+  Replaces placeholders in `version.h` header file for build info taken from the environment 
 
 ## build.bat
 
