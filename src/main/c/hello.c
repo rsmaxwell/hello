@@ -10,6 +10,7 @@ int main(int argc, char *argv[]) {
     printf("    GIT_COMMIT = %s\n", GIT_COMMIT);
     printf("    GIT_BRANCH = %s\n", GIT_BRANCH);
     printf("    GIT_URL    = %s\n", GIT_URL);
+    printf("Goodbye!\n");
     return 0;
 }
 
